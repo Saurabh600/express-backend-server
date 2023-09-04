@@ -24,12 +24,26 @@ app.use(cookieParser());
 app.use(morgan("tiny"));
 app.use(compression());
 
+app.use(express.static("./public"));
+app.set("view engine", "hbs");
+app.set("views", "template");
+
 // demo route
 app.get("/hello", (req, res) => {
   res.status(200).json({
     status: true,
     info: "check health route",
     message: "response fulfilled!",
+  });
+});
+
+app.get("/greet", (req, res) => {
+  res.status(200).render("index", {
+    data: {
+      name: "Saurabh Chaudhary",
+      origin: "India",
+      gender: "male",
+    },
   });
 });
 
