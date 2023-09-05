@@ -8,7 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import compression from "compression";
 
-import { authRouter, userRouter } from "./routes";
+import { authRouter, todoRouter, userRouter } from "./routes";
 
 // app initialization
 const app = express();
@@ -29,11 +29,11 @@ app.set("view engine", "hbs");
 app.set("views", "template");
 
 // demo route
-app.get("/hello", (req, res) => {
+app.get("/hello", async (req, res) => {
   res.status(200).json({
     status: true,
-    info: "check health route",
-    message: "response fulfilled!",
+    route: req.url,
+    message: "hurray!",
   });
 });
 
@@ -41,6 +41,7 @@ app.get("/greet", (req, res) => {
   res.status(200).render("index", {
     data: {
       name: "Saurabh Chaudhary",
+      route: req.url,
       origin: "India",
       gender: "male",
     },
@@ -49,7 +50,8 @@ app.get("/greet", (req, res) => {
 
 // routers group
 app.use("/api/auth", authRouter);
-app.use("/api/users", userRouter);
+app.use("/api/user", userRouter);
+app.use("/api/todo", todoRouter);
 
 // starting server
 server.listen(Number(port), () => {
