@@ -1,22 +1,11 @@
 import { Router } from "express";
-import {
-  createUserWithEmailAndPassword,
-  getAllUsers,
-  getUserById,
-} from "../controllers/user";
 import pool from "../config/mysql";
 
 const router = Router();
 
-router.get("/all", getAllUsers);
-router.get("/one/:userId", getUserById);
-// router.put("/", (req, res) => {});
-router.post("/", createUserWithEmailAndPassword);
-// router.delete("/", (req, res) => {});
-
 router.get("/hi", async (req, res) => {
   const connection = await pool.getConnection();
-  const [data] = await connection.query("DESCRIBE Users;");
+  const [data] = await connection.query("DESCRIBE Todos;");
   connection.release();
   res.status(200).json({
     status: true,
