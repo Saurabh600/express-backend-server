@@ -1,4 +1,4 @@
-import { createPool } from "mysql2/promise";
+import { createPool } from "mysql2/promise"
 
 const pool = createPool({
   user: "root",
@@ -6,6 +6,6 @@ const pool = createPool({
   host: "127.0.0.1",
   port: 3306,
   database: "dummy_express",
-});
+})
 
-export default pool;
+export default pool
