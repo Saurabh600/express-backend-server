@@ -1,5 +1,5 @@
-import userRouter from "./user"
-import authRouter from "./auth"
-import todoRouter from "./todo"
+import userRouter from "./user";
+import authRouter from "./auth";
+import todoRouter from "./todo";
 
-export { userRouter, authRouter, todoRouter }
+export { userRouter, authRouter, todoRouter };

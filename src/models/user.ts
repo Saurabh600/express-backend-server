@@ -1,11 +1,11 @@
-import db from "../config/db"
+import db from "../config/db";
 
 type TUser = {
-  userId: number
-  email: string
-  password: string
-  passwordHash: string
-}
+  userId: number;
+  email: string;
+  password: string;
+  passwordHash: string;
+};
 
 const dbInsertUser = (
   email: string,
@@ -17,12 +17,12 @@ const dbInsertUser = (
       "insert into simple_user(email, password, passwordHash) values (?, ?, ?)",
       [email, password, passwordHash],
       (err) => {
-        if (err) return reject(err)
-        return resolve()
+        if (err) return reject(err);
+        return resolve();
       },
-    )
-  })
-}
+    );
+  });
+};
 
 const dbGetUser = (email: string) => {
   return new Promise<TUser>((resolve, reject) => {
@@ -30,21 +30,21 @@ const dbGetUser = (email: string) => {
       "select * from simple_user where email = ?",
       [email],
       (err, row) => {
-        if (err) return reject(err)
-        return resolve(row)
+        if (err) return reject(err);
+        return resolve(row);
       },
-    )
-  })
-}
+    );
+  });
+};
 
 const dbGetAllUsers = () => {
   return new Promise<TUser[]>((resolve, reject) => {
     db.all<TUser>("select * from simple_user", (err, data) => {
-      if (err) return reject(err)
-      return resolve(data)
-    })
-  })
-}
+      if (err) return reject(err);
+      return resolve(data);
+    });
+  });
+};
 
 export const dbGetUserById = (userId: number) => {
   return new Promise<TUser>((resolve, reject) => {
@@ -52,11 +52,11 @@ export const dbGetUserById = (userId: number) => {
       "select * from simple_user where userId = ?",
       [userId],
       (err, data) => {
-        if (err) return reject(err)
-        return resolve(data)
+        if (err) return reject(err);
+        return resolve(data);
       },
-    )
-  })
-}
+    );
+  });
+};
 
-export { dbGetUser, dbGetAllUsers, dbInsertUser as dbInsertSimpleUser }
+export { dbGetUser, dbGetAllUsers, dbInsertUser as dbInsertSimpleUser };
