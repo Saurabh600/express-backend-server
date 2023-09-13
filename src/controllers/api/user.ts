@@ -6,7 +6,7 @@ import {
   dbGetUser,
   dbGetUserById,
   dbInsertSimpleUser,
-} from "../models/user"
+} from "../../models/user"
 
 const registerEmailPasswordSchema = z.object({
   email: z.string().email().max(50),

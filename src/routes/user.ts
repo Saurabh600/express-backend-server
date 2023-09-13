@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAllUsers,
   getUserById,
-} from "../controllers/user"
+} from "../controllers/api/user"
 import pool from "../config/mysql"
 
 const router = Router()
